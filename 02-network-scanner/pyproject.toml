@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netrecon"
+version = "0.1.0"
+description = "Async TCP service mapper and banner-based vulnerability scanner with a built-in safe lab"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["security", "port-scanner", "banner-grabbing", "vulnerability", "asyncio", "recon"]
+dependencies = []          # standard library only
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+netrecon = "netrecon.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["netrecon*"]
+
+[tool.setuptools.package-data]
+netrecon = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
